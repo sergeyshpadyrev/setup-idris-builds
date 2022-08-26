@@ -23,7 +23,7 @@ jobs:
           make bootstrap
           make install
       - name: Archive build 
-        run: tar -zcvf idris2-ubuntu.tar.gz $HOME/.idris2/bin
+        run: tar -zcvf $HOME/idris2-ubuntu.tar.gz $HOME/.idris2/bin
       - name: Upload archive to release
         uses: svenstaro/upload-release-action@v2
         with:
