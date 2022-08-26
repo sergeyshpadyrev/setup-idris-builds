@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@3
+        uses: actions/checkout@v3
       - name: Setup Idris
-        uses: sergeyshpadyrev/setup-idris@1
+        uses: sergeyshpadyrev/setup-idris@v1
       - name: Check setup
         run: |
           idris -v
