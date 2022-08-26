@@ -22,6 +22,15 @@ jobs:
           export PATH="${PATH}:~/.idris2/bin"
           make bootstrap
           make install
-      - name: Test 
-        run: ~/.idris2/bin/idris2 -v
+      - name: Archive build 
+        run: sudo tar -c -f -z -v idris2-ubuntu.tar.gz ~/.idris2/bin/
+      - name: Upload archive to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          asset_name: idris2-ubuntu.tar.gz
+          body: "Latest Idris2 build"
+          file: idris2.tar.gz
+          overwrite: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: latest
         
