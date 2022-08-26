@@ -23,13 +23,13 @@ jobs:
           make bootstrap
           make install
       - name: Archive build 
-        run: tar -zcvf ./idris2-ubuntu.tar.gz ~/.idris2/bin
+        run: tar -zcvf idris2-ubuntu.tar.gz $HOME/.idris2/bin
       - name: Upload archive to release
         uses: svenstaro/upload-release-action@v2
         with:
           asset_name: idris2-ubuntu.tar.gz
           body: "Latest Idris2 build"
-          file: ./idris2-ubuntu.tar.gz
+          file: idris2-ubuntu.tar.gz
           overwrite: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
