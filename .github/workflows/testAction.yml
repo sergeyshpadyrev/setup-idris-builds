@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Idris
-        uses: actions/setup-idris@v1
+        uses: sergeyshpadyrev/setup-idris@v1
       - name: Check setup
         run: |
           idris -v
