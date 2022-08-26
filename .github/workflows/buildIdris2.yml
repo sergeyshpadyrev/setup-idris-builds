@@ -9,14 +9,22 @@ jobs:
     name: Deploy staging
     runs-on: ubuntu-latest
     steps:
-      - name: Install dependencies
-        run: sudo apt-get -y install build-essential clang chezscheme
+      - name: Get latest idris2 release
+        id: idris2release
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: idris-lang/Idris2
+          excludes: prerelease, draft
       - name: Checkout idris2 repository
         uses: actions/checkout@v3
         with:
-          repository: idris-lang/Idris2
+          fetch-depth: 0 
           path: idris2-source
-          ref: v0.5.1
+          ref: ${{ steps.idris2release.outputs.release }}
+          repository: idris-lang/Idris2
+      - name: Install dependencies
+        run: sudo apt-get -y install build-essential clang chezscheme
+      - name: Checkout to latest tag
       - name: Build idris2
         run: |
           cd idris2-source
