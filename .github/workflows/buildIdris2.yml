@@ -24,7 +24,6 @@ jobs:
           repository: idris-lang/Idris2
       - name: Install dependencies
         run: sudo apt-get -y install build-essential clang chezscheme
-      - name: Checkout to latest tag
       - name: Build idris2
         run: |
           cd idris2-source
