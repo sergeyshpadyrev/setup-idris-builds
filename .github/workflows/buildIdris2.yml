@@ -16,7 +16,7 @@ jobs:
           path: idris2-source
           ref: v0.5.1
       - name: Build idris2
-       run: |
+        run: |
           cd idris2-source
           export SCHEME=scheme
           export PATH="${PATH}:~/.idris2/bin"
