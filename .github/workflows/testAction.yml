@@ -12,13 +12,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Idris
-        uses: sergeyshpadyrev/setup-idris@v1
+        uses: actions/setup-idris@v1
       - name: Check setup
         run: |
           idris -v
           idris2 -v
       - name: Compile program
-        run: idris main.idr -O main
+        run: idris main.idr -o main
       - name: Run compiled program
         run: ./build/exec/main
       
