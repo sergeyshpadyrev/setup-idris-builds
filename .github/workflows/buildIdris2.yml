@@ -66,7 +66,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           build-args: |
-            IDRIS_BUILD_VERSION=${{ steps.idris2release.outputs.release }}
+            idris_build_version=${{ steps.idris2release.outputs.release }}
           context: .
           push: true
           tags: sergeyshpadyrev/idris:latest
