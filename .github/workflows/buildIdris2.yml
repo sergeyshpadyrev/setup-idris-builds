@@ -75,6 +75,6 @@ jobs:
           build-args: |
             idris_build_version=${{ steps.idris2release.outputs.release }}
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64,linux/arm64/v8
           push: true
           tags: sergeyshpadyrev/idris:latest
