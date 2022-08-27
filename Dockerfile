@@ -1,6 +1,6 @@
 FROM schemers/chezscheme:latest
 
-RUN apt update && apt -y install chezscheme wget
+RUN apt update && apt -y install wget
 
 ARG idris_build_version
 
