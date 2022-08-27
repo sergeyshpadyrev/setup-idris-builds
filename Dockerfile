@@ -9,4 +9,4 @@ RUN tar -xvf idris2-ubuntu.tar.gz -C /root
 RUN rm ./idris2-ubuntu.tar.gz
 RUN ln -sf /root/.idris2/bin/idris2 /root/.idris2/bin/idris
 
-ENV PATH="${PATH}:/root/.idris2/bin/"
+ENV PATH="${PATH}:/root/.idris2/bin"
