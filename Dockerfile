@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 ARG idris_build_version
 
-RUN apt update && apt -y install chezscheme
+RUN apt update && apt -y install chezscheme wget
 RUN export IDRIS_BUILD_URL=https://github.com/sergeyshpadyrev/setup-idris-builds/releases/download/$idris_build_version/idris2-ubuntu.tar.gz
 RUN wget -O idris2-ubuntu.tar.gz "$IDRIS_BUILD_URL" 
 RUN tar -xvf idris2-ubuntu.tar.gz -C ~
