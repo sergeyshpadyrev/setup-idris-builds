@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 
-RUN apt update && apt -y install wget chezscheme
+RUN apt update && apt -y install wget git build-essential clang
+RUN git clone https://github.com/cisco/ChezScheme.git
+RUN cd ChezScheme && ./configure && make install
 
 ARG idris_build_version
 
