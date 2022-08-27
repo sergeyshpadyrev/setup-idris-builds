@@ -1,3 +1,5 @@
 # Builds for setup-idris Github action
 
-This repository creates and stores Idris builds for [setup-idris](https://github.com/sergeyshpadyrev/setup-idris) action
+![Build Idris2](https://github.com/sergeyshpadyrev/setup-idris-builds/actions/workflows/buildIdris2.yml/badge.svg)
+
+This repository creates and stores Idris builds for [setup-idris](https://github.com/marketplace/actions/setup-idris) action
