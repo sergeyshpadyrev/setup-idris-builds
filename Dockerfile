@@ -1,10 +1,22 @@
 FROM ubuntu:latest
 
-RUN apt update && apt -y install wget chezscheme libncurses5-dev
+WORKDIR /idris2-compiler
+
+RUN apt update && apt-get -y install build-essential clang chezscheme git
+RUN git clone https://github.com/idris-lang/Idris2.git
+
+WORKDIR /idris2-compiler/Idris2
+
 ARG idris_build_version
-RUN wget -O idris2-ubuntu.tar.gz https://github.com/sergeyshpadyrev/setup-idris-builds/releases/download/$idris_build_version/idris2-ubuntu.tar.gz
-RUN tar -xvf idris2-ubuntu.tar.gz -C /root
-RUN rm ./idris2-ubuntu.tar.gz
+RUN git checkout $idris_build_version
+
+ENV SCHEME=scheme
+ENV PATH="${PATH}:/root/.idris2/bin"
+
+RUN make bootstrap
+RUN make install
+
 RUN ln -sf /root/.idris2/bin/idris2 /root/.idris2/bin/idris
 
-ENV PATH="${PATH}:/root/.idris2/bin"
+WORKDIR /root
+RUN rm -r /idris2-compiler
