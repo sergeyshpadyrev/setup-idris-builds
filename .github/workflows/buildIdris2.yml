@@ -15,7 +15,14 @@ jobs:
         with:
           repository: idris-lang/Idris2
           excludes: prerelease, draft
+      - name: Get latest build
+        id: idris2build
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: sergeyshpadyrev/setup-idris-builds
+          excludes: prerelease, draft
       - name: Checkout idris2 repository
+        if: steps.idris2release.outputs.release != steps.idris2build.outputs.release
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 
@@ -23,17 +30,21 @@ jobs:
           ref: ${{ steps.idris2release.outputs.release }}
           repository: idris-lang/Idris2
       - name: Install dependencies
+        if: steps.idris2release.outputs.release != steps.idris2build.outputs.release
         run: sudo apt-get -y install build-essential clang chezscheme
       - name: Build idris2
+        if: steps.idris2release.outputs.release != steps.idris2build.outputs.release
         run: |
           cd idris2-source
           export SCHEME=scheme
           export PATH="${PATH}:~/.idris2/bin"
           make bootstrap
           make install
-      - name: Archive build 
+      - name: Archive build
+        if: steps.idris2release.outputs.release != steps.idris2build.outputs.release
         run: tar -zcvf idris2-ubuntu.tar.gz -C $HOME .idris2
       - name: Upload archive to release
+        if: steps.idris2release.outputs.release != steps.idris2build.outputs.release
         uses: svenstaro/upload-release-action@v2
         with:
           asset_name: idris2-ubuntu.tar.gz
@@ -41,5 +52,5 @@ jobs:
           file: idris2-ubuntu.tar.gz
           overwrite: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: latest
+          tag: ${{ steps.idris2release.outputs.release }}
         
