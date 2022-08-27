@@ -18,5 +18,5 @@ RUN make install
 
 RUN ln -sf /root/.idris2/bin/idris2 /root/.idris2/bin/idris
 
-WORKDIR /root
+WORKDIR /
 RUN rm -r /idris2-compiler
