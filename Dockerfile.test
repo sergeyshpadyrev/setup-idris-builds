@@ -1,0 +1,9 @@
+FROM sergeyshpadyrev/idris:latest
+
+WORKDIR /app
+
+COPY main.idr .
+
+RUN idris -o main main.idr
+
+CMD ./build/exec/main
