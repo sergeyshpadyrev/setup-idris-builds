@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM schemers/chezscheme:latest
 
 RUN apt update && apt -y install chezscheme wget
 
