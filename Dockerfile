@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 WORKDIR /idris2-compiler
 
-RUN apt update && apt-get -y install build-essential clang chezscheme git
+RUN apt update && apt-get -y install build-essential clang chezscheme git libgmp3-dev
 RUN git clone https://github.com/idris-lang/Idris2.git
 
 WORKDIR /idris2-compiler/Idris2
