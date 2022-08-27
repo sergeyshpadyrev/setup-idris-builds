@@ -6,7 +6,7 @@ on:
     - cron: "0 0 * * 0"
 jobs:
   buildIdris2:
-    name: Deploy staging
+    name: Build Idris2
     runs-on: ubuntu-latest
     steps:
       - name: Get latest idris2 release
